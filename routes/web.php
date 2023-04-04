@@ -23,3 +23,6 @@ Route::get('/', function () {
 
 Route::get('/products', [ProductController::class, 'index'])->name('index');
 Route::get('/products/add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('addToCart');
+
+//Cart detail
+Route::get('/products/cart', [ProductController::class, 'cartDetail'])->name('cartDetail');

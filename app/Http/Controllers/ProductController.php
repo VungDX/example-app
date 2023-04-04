@@ -32,4 +32,11 @@ class ProductController extends Controller
         session()->put('cart', $cart);
         dd(session()->get('cart'));
     }
+
+    //Cart detail
+    public function cartDetail()
+    {
+        echo "<pre>";
+        print_r(session()->get('cart'));
+    }
 }
