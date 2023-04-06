@@ -41,7 +41,7 @@
               <p class="card-text">{{$products->description}}</p>
             </div>
             <div class="card-footer d-flex justify-content-center">
-              <a href="#" id='add_to_cart' data-url="{{ route('addToCart', ['id' => $products->id]) }}" class="btn btn-primary">ADD TO CART</a>
+              <a href="#" class='btn btn-primary add_to_cart' data-url="{{ route('addToCart', ['id' => $products->id]) }}">ADD TO CART</a>
             </div>
           </div>
         </div>
@@ -82,7 +82,7 @@
     }
 
     $(function() {
-      $('#add_to_cart').on('click', addToCart)
+      $('.add_to_cart').on('click', addToCart)
     });
   </script>
 </body>

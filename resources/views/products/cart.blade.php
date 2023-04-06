@@ -14,22 +14,34 @@
 <body>
   <div class="cart">
     <div class="container">
-      <div class="row">
+      <div class="row mt-3">
         <table class="table">
           <thead>
             <tr>
               <th scope="col">#id</th>
               <th scope="col">Ảnh sản phẩm</th>
               <th scope="col">Tên</th>
+              <th scope="col">Đơn giá</th>
+              <th scope="col">Số lượng</th>
+              <th scope="col">Thành tiền</th>
               <th scope="col">Xử lý</th>
             </tr>
           </thead>
           <tbody>
-            @foreach($cart as $cartItem)
+            <?php $total = 0 ?>
+            @foreach($cart as $id => $cartItem)
+            <?php $total += $cartItem['price'] * $cartItem['quantity'] ?>
             <tr>
-              <th scope="row">1</th>
+              <th scope="row">{{$id}}</th>
+              <td>
+                <img style="width: 100px; height: 100px; object-fit: contain" src="{{$cartItem['image_path']}}" />
+              </td>
               <td>{{$cartItem['name']}}</td>
-              <td>{{$cartItem['name']}}</td>
+              <td>{{ number_format($cartItem['price']) }} </td>
+              <td>
+                <input type="number" value="{{$cartItem['quantity']}}" min="1" />
+              </td>
+              <td>{{ number_format( $cartItem['price'] * $cartItem['quantity']) }} </td>
               <td>
                 <button type="button" class="btn btn-warning">Edit</button>
                 <button type="button" class="btn btn-danger">Delete</button>
@@ -38,6 +50,10 @@
             @endforeach
           </tbody>
         </table>
+        <div class="col-md-12">
+          --------------------------------------------------
+          <h2>Total: {{number_format($total)}}</h2>
+        </div>
       </div>
     </div>
   </div>
